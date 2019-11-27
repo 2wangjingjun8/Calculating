@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>buyahouseinseattle.com——租售比计算器</title>
+		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/style2.css">
+		<link rel="stylesheet" href="static/css/style3.css">
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/common.js"></script>
+		
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	 <!-- oncontextmenu=self.event.returnValue=false onselectstart="return false" -->
+	<body>	
+		<div class="cal_box">
+			<h1>租售比计算器</h1>
+			
+			<form name="calform" class="calform" method="post" action="index.php">
+				<table class="panel" align="center">
+					<tbody>
+						<tr>
+							<td valign="top">
+								<table>
+									<tbody>
+										<tr>
+											<td colspan="3" id="sectitle">购买</td>
+										</tr>
+										<tr>
+											<td align="left">购买价格</td>
+											<td align="right"><input type="text" name="cprice" id="cprice" value="<?php echo isset($data['cprice'])?$data['cprice']:500000 ?>" class="inlong indollar" ></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td align="left">首付</td>
+											<td align="right"><input type="text" name="cdownpayment" id="cdownpayment" value="<?php echo isset($data['cdownpayment'])?$data['cdownpayment']:20 ?>" class="innormal inpct" </td>
+											<td></td>
+										</tr>
+										<tr>
+											<td align="left">利率</td>
+											<td align="right"><input type="text" name="cinterest" id="cinterest" value="<?php echo isset($data['cinterest'])?$data['cinterest']:4.5 ?>" class="innormal inpct"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td align="left">贷款期限<small>（最长30年）</small></td>
+											<td align="right"><input type="text" name="cloanterm" id="cloanterm" value="<?php echo isset($data['cloanterm'])?$data['cloanterm']:30 ?>" class="innormal" ></td>
+											<td>年</td>
+										</tr>
+										<tr>
+											<td align="left">过户成本</td>
+											<td align="right"><input type="text" name="cothercost" id="cothercost" value="<?php echo isset($data['cothercost'])?$data['cothercost']:3000 ?>" class="inlong indollar"></td>
+											<td></td>
+										</tr>
+			
+										<tr>
+											<td colspan="3">&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="3" id="sectitle">经常性运营费用</td>
+										</tr>
+										<tr valign="bottom">
+											<td>&nbsp;</td>
+											<td align="center">年</td>
+											<td>年增幅</td>
+										</tr>
+										<tr>
+											<td align="left">年地产税支出</td>
+											<td align="right"><input type="text" name="ctax" id="ctax" value="<?php echo isset($data['ctax'])?$data['ctax']:5500 ?>" class="innormal indollar" ></td>
+											<td><input type="text" name="ctaxincrease" id="ctaxincrease" value="<?php echo isset($data['ctaxincrease'])?$data['ctaxincrease']:3 ?>" class="in4char inpct"></td>
+										</tr>
+										<tr>
+											<td align="left">年保险支出</td>
+											<td align="right"><input type="text" name="cinsurance" id="cinsurance" value="<?php echo isset($data['cinsurance'])?$data['cinsurance']:800 ?>" class="innormal indollar" ></td>
+											<td><input type="text" name="cinsuranceincrease" id="cinsuranceincrease" value="<?php echo isset($data['cinsuranceincrease'])?$data['cinsuranceincrease']:3 ?>" class="in4char inpct"></td>
+										</tr>
+										<tr>
+											<td align="left">物业费年支出</td>
+											<td align="right"><input type="text" name="choa" id="choa" value="<?php echo isset($data['choa'])?$data['choa']:3000 ?>" class="innormal indollar"   ></td>
+											<td><input type="text" name="choaincrease" id="choaincrease" value="<?php echo isset($data['choaincrease'])?$data['choaincrease']:3 ?>" class="in4char inpct"></td>
+										</tr>
+										<tr>
+											<td align="left">保养维修年支出</td>
+											<td align="right"><input type="text" name="cmaintenance" id="cmaintenance" value="<?php echo isset($data['cmaintenance'])?$data['cmaintenance']:1000 ?>" class="innormal indollar" ></td>
+											<td><input type="text" name="cmaintenanceincrease" id="cmaintenanceincrease" value="<?php echo isset($data['cmaintenanceincrease'])?$data['cmaintenanceincrease']:3 ?>" class="in4char inpct"></td>
+										</tr>
+										<tr>
+											<td align="left">其他年支出</td>
+											<td align="right"><input type="text" name="cother" id="cother" value="<?php echo isset($data['cother'])?$data['cother']:200 ?>" class="innormal indollar" ></td>
+											<td><input type="text" name="cotherincrease" id="cotherincrease" value="<?php echo isset($data['cotherincrease'])?$data['cotherincrease']:3 ?>" class="in4char inpct"></td>
+										</tr>
+			
+			
+									</tbody>
+								</table>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td valign="top">
+								<table>
+									<tbody>
+										<tr>
+											<td colspan="3" id="sectitle">收入</td>
+										</tr>
+										<tr>
+											<td colspan="2">&nbsp;</td>
+											<td>年增加</td>
+										</tr>
+										<tr>
+											<td align="left">每月租金</td>
+											<td align="right"><input type="text" name="crent" id="crent" value="<?php echo isset($data['crent'])?$data['crent']:2500 ?>" class="innormal indollar"></td>
+											<td><input type="text" name="crentincrease" id="crentincrease" value="<?php echo isset($data['crentincrease'])?$data['crentincrease']:5 ?>" class="in4char inpct">&nbsp;</td>
+										</tr>
+			
+										<tr>
+											<td align="left">其他月收入</td>
+											<td align="right"><input type="text" name="cotherincome" id="crent" value="<?php echo isset($data['cotherincome'])?$data['cotherincome']:0 ?>" class="innormal indollar"></td>
+										</tr>
+			
+										<tr>
+											<td align="left">通胀率</td>
+											<td align="right"><input type="text" name="cinflation" id="cinflation" value="<?php echo isset($data['cinflation'])?$data['cinflation']:3 ?>" class="innormal inpct"></td>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td align="left">空置率</td>
+											<td align="right"><input type="text" name="cvacancy" id="cvacancy" value="<?php echo isset($data['cvacancy'])?$data['cvacancy']:2 ?>" class="innormal inpct"></td>
+											<td>&nbsp;</td>
+										</tr>
+										
+										<tr id="cuseManagediv" >
+											<td align="left">委管管理费</td>
+											<td align="right"><input type="text" name="cmanagement" id="cmanagement" value="<?php echo isset($data['cmanagement'])?$data['cmanagement']:5 ?>" class="innormal inpct"></td>
+											<td>&nbsp;</td>
+										</tr>
+			
+										<tr>
+											<td colspan="3">&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="3" id="sectitle">出售</td>
+										</tr>
+										<tr>
+											<td align="left">
+												<div id="valueapp1" style="display: block;">房产年增值率</div>
+											</td>
+											<td align="right">
+												<div id="valueapp2" style="display: block;"><input type="text" name="cappreciation" id="cappreciation" value="<?php echo isset($data['cappreciation'])?$data['cappreciation']:6 ?>" class="innormal inpct"></div>
+											</td>
+											<td>
+												<div id="valueapp3" style="display: block;">每年</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td align="left">持有年份<small>（最多30年）</small></td>
+											<td align="right" valign="top"><input type="text" name="cholding" id="cholding" value="<?php echo isset($data['cholding'])?$data['cholding']:15 ?>" class="innormal"></td>
+											<td>年</td>
+										</tr>
+										<tr>
+											<td align="left">销售成本<br> <small >（过户税+经纪人佣金）</small></td>
+											<td align="right"><input type="text" name="csellcost" id="csellcost" value="<?php echo isset($data['csellcost'])?$data['csellcost']:8 ?>" class="innormal inpct"></td>
+											<td>&nbsp;</td>
+										</tr>
+										
+										<tr>
+											<td colspan="2" align="right">
+												<br>
+												<button type="submit" class="btn btn-primary">输出结果</button>
+												<button type="button" class="btn btn-danger" onclick="clearForm(document.calform);" >清空</button>
+											</td>
+											<td>&nbsp;</td>
+										</tr>
+									</tbody>
+								</table>
+			
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			
+			
+			
+			<?php if($isshow):?>
+			
+			<button onclick="printDeal1()">打印输入和结果</button>
+			<div id="printBox1">
+					<a target="_blank" href="http://buyahouseinseattle.com/">buyahouseinseattle.com——租售比计算器</a>
+				<div id="input_data" >
+					<h2 class="h2result">输入</h2>
+					<div class="row">
+						<div class="col-sm-6">
+							<table class="table table-striped table-hover table-responsive table-bordered">
+							  <tbody>
+									<tr align='left'>
+										<td>购买价格	</td><td>$ <span class=""><?php echo $data['cprice'];?> </span> </td>
+									</tr>
+									<tr align='left'>
+										<td>首付	</td><td> <span class=""><?php echo $data['cdownpayment'];?> % </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>利率	</td><td> <span class=""><?php echo $data['cinterest'];?> %</span> </td>
+									</tr>
+									<tr align='left'>
+										<td>贷款期限<small>（最长30年）</small></td><td> <span class=""><?php echo $data['cloanterm'];?> 年</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>过户成本	</td><td>$ <span class=""><?php echo $data['cothercost'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>其他月收入	</td><td>$ <span class=""><?php echo $data['cotherincome'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>通胀率</td><td> <span class=""><?php echo $data['cinflation'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>空置率</td><td> <span class=""><?php echo $data['cvacancy'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>委管管理费</td><td> <span class=""><?php echo $data['cmanagement'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>每年房产年增值率</td><td> <span class=""><?php echo $data['cappreciation'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>持有年份<small>（最多30年）</small>	</td><td><span class=""><?php echo $data['cholding'];?> 年</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>销售成本（过户税+经纪人佣金）</td><td> <span class=""><?php echo $data['csellcost'];?> %</span> </td>
+									</tr>
+								
+							  </tbody>
+							</table>
+						</div>
+						<div class="col-sm-6">
+							<table class="table table-striped table-hover table-responsive table-bordered">
+							  <tbody>
+									<tr align='left' >
+										<td>每月租金	</td><td>$ <span class=""><?php echo $data['crent'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>租金年增加</td><td> <span class=""><?php echo $data['crentincrease'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>地产税年支出	</td><td>$ <span class=""><?php echo $data['ctax'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年地产税增幅</td><td> <span class=""><?php echo $data['ctaxincrease'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年保险支出	</td><td>$ <span class=""><?php echo $data['cinsurance'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年保险增幅</td><td> <span class=""><?php echo $data['cinsuranceincrease'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>物业费年支出	</td><td>$ <span class=""><?php echo $data['choa'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年物业费增幅</td><td> <span class=""><?php echo $data['choaincrease'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>保养维修年支出	</td><td>$ <span class=""><?php echo $data['cmaintenance'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年保养维修增幅</td><td> <span class=""><?php echo $data['cmaintenanceincrease'];?> %</span> </td>
+									</tr>
+									<tr align='left' >
+										<td>其他年支出	</td><td>$ <span class=""><?php echo $data['cother'];?> </span> </td>
+									</tr>
+									<tr align='left' >
+										<td>年其他费用增幅</td><td> <span class=""><?php echo $data['cotherincrease'];?> %</span> </td>
+									</tr>
+								
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<h2 class="h2result">结果</h2>
+				<div class="row">
+					<div class="col-sm-6">
+						<table class="table table-striped table-hover table-responsive table-bordered">
+						  <thead>
+							<tr>
+							  <th colspan="2">变量</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr><td>贷款额度</td><td>$ <span class="loan_limit"> <?php echo $loan_limit;?> </span> </td></tr>
+							<tr><td>还贷月数</td><td><span class="monthly_repayment"> <?php echo $monthly_repayment;?> </span></td></tr>
+							<tr><td>每月地产税</td><td>$ <span class="monthly_property_tax"><?php echo round($monthly_ctax,2);?></span> </td></tr>
+							<tr><td>每月保险费</td><td>$ <span class="monthly_cinsurance"><?php echo round($monthly_cinsurance,2);?></span> </td></tr>
+							<tr><td>每月物业费</td><td>$ <span class="monthly_choa"><?php echo round($monthly_choa,2);?></span> </td></tr>
+							<tr><td>每月维修保养费</td><td>$ <span class="monthly_cmaintenance"><?php echo round($monthly_cmaintenance,2);?></span></td></tr>
+							<tr><td>每月其他费用</td><td>$ <span class="monthly_cother"><?php echo round($monthly_cother,2);?></span> </td></tr>
+						  </tbody>
+						</table>
+					</div>
+					<div class="col-sm-6" >
+						<table class="table table-striped table-hover table-responsive table-bordered">
+						  <thead>
+							<tr>
+							  <th colspan="2">总结</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr><td>第一年净收入</td><td>$ <span class=""><?php echo $nincome_first_year;?> </span> </td></tr>
+							<tr><td>第一年租金回报率</td><td><span class=""> <?php echo round($rent_return_first_year,1);?>% </span></td></tr>
+							<tr><td>持有年限平均租金回报率</td><td><span class=""><?php echo round($avg_retrun_rate,1);?>%</span> </td></tr>
+							<tr><td>持有年限总回报率<br> <small>（租金回报率+增值率）</small> </td><td><span class=""><?php echo round($total_retrun_rate,1);?>%</span></td></tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+				
+			</div>
+			<?php endif;?>
+		</div>
+		<?php if($isshow):?>
+			<button class="printDeal" onclick="printDeal()">打印表</button> 
+			    
+			<div class="mobile-table" id="printBox">
+				<div class="row">
+					<a target="_blank" href="http://buyahouseinseattle.com/">buyahouseinseattle.com——租售比计算器</a>
+				</div>
+				<table class="table table-bordered table-hover" >
+					<thead>
+						<tr class="table-header">
+						  <th>年</th>
+						  <th>按揭付款</th>
+						  <th>按揭余额</th>
+						  <th>已付利息</th>
+						  <th>已付本金</th>
+						  <th>抵押贷款余额</th>
+						  <th>每月租金</th>
+						  <th>其他月收入</th>
+						  <th>托管管理费</th>
+						  <th>地产税</th>
+						  <th>保险</th>
+						  <th>HOA 物业费</th>
+						  <th>维修保养</th>
+						  <th>其他费用</th>
+						  <th>净收入</th>
+						</tr>
+					</thead>
+					<tbody >
+						<?php foreach ($show_list as $k=>$row): ?>
+						<tr>
+							<td><?php echo $row['year']; ?></td>
+							<td>$<?php echo round($row['mortgage_payment'],0); ?></td>
+							<td>$<?php echo round($row['mortgage_balance'],0); ?></td>
+							<td>$<?php echo round($row['interest_paid'],0); ?></td>
+							<td>$<?php echo round($row['principal_paid'],0); ?></td>
+							<td>$<?php echo round($row['loan_mortgage_balance'],0); ?></td>
+							<td>$<?php echo round($row['crent'],0); ?></td>
+							<td>$<?php echo $row['cotherincome']; ?></td>
+							<td>$<?php echo round($row['cmanagement'],0); ?></td>
+							<td>$<?php echo round($row['ctax'],0); ?></td>
+							<td>$<?php echo round($row['cinsurance'],0); ?></td>
+							<td>$<?php echo round($row['choa'],0); ?></td>
+							<td>$<?php echo round($row['cmaintenance'],0); ?></td>
+							<td>$<?php echo round($row['cother'],0); ?></td>
+							<td>$<?php echo round($row['total'],0); ?></td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+
+				
+		<?php endif;?>
+		
+		<?php include 'template/float.html';?>
+		 
+	</body>
+	
+</html>

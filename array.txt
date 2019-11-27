@@ -1,0 +1,46 @@
+﻿Inputs!
+---------
+["cprice"]=> string(6) "500000" 			购买价格		Inputs!C2
+["cdownpayment"]=> string(2) "20" 			首付			Inputs!C3
+["cinterest"]=> string(3) "4.5" 			利率			Inputs!C4
+["cloanterm"]=> string(2) "30" 				贷款期限		Inputs!C5
+["cothercost"]=> string(4) "3000" 			过户成本		Inputs!C6
+---------
+["ctax"]=> string(4) "5500" 				地产税		Inputs!C15
+["ctaxincrease"]=> string(1) "3" 			增幅			Inputs!C16
+
+["cinsurance"]=> string(3) "800" 			保险			Inputs!C17
+["cinsuranceincrease"]=> string(1) "3" 		增幅			Inputs!C18
+
+["choa"]=> string(4) "3000" 				物业费		Inputs!C19
+["choaincrease"]=> string(1) "3" 			增幅			Inputs!C20
+
+["cmaintenance"]=> string(4) "1000" 		保养维修		Inputs!C21
+["cmaintenanceincrease"]=> string(1) "3"	增幅			Inputs!C22
+
+["cother"]=> string(3) "200" 				其他费用		Inputs!C23
+["cotherincrease"]=> string(1) "3" 			增幅			Inputs!C24
+---------
+["crent"]=> string(4) "2500" 				每月租金		Inputs!C8
+["crentincrease"]=> string(1) "3" 			增幅			Inputs!C9
+["cotherincome"]=> string(1) "0" 			其他月收入	Inputs!C10
+		
+
+["cinflation"]=> string(1) "3" 				通胀率		Inputs!C11
+["cvacancy"]=> string(1) "2" 				空置率		Inputs!C12
+["cuseManage"]=> string(3) "yes" 			是否委管		
+["cmanagement"]=> string(1) "5" 			管理费		Inputs!C13
+---------
+["cappreciation"]=> string(1) "3" 			房产年增值率	Inputs!C26
+["cholding"]=> string(2) "20" 				持有年份		Inputs!C27
+["csellcost"]=> string(1) "8" 				销售成本		Inputs!C28
+---------
+
+'Key Variables'!
+贷款额度			B1
+还贷月数			B2
+每月地产税		B3
+每月保险费		B4
+每月物业费		B5
+每月维修保养费	B6
+每月其他费用		B7

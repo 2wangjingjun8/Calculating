@@ -1,0 +1,39 @@
+
+.calform{
+	margin-block-end:1em
+}
+.calform table.panel{
+	border-collapse: separate;
+	border-spacing: 2px;
+	margin: auto 0;
+	width: 100%;
+}
+.calform td, th{
+	padding: 1px;
+}
+.calform img{
+	vertical-align: top;
+}
+body{background:#fff;padding:5px; }
+body,p,td,div,span{font-family:arial,helvetica,sans-serif;font-size:16px;color:#000;}
+.cal_box{width:728px;text-align:center;margin: 0 auto;}
+
+.float_div{
+	position: fixed;
+	bottom: 30%;
+	right: 5px;
+	/* width: 180px; */
+}
+.float_div a{
+	text-decoration: none;
+}
+.pc-table{
+	/* padding-bottom: 100px; */
+}
+
+#printBox1 a,#printBox a{
+	text-decoration: none;
+} 
+#printBox1 a:hover,#printBox a:hover{
+	text-decoration: underline;
+}

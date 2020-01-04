@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>buyahouseinseattle.com——二代居计算器</title>
+		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/style2.css">
+		<link rel="stylesheet" href="static/css/style3.css">
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/common.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body oncontextmenu=self.event.returnValue=false onselectstart="return false">		
+			<div class="cal_box" >
+				<h1>二代居计算器</h1>
+				<form name="calform" class="calform" method="post" action="two.php">
+					<table class="panel" align="center">
+						<tbody>
+							<tr>
+								<td colspan="3" id="sectitle">输入</td>
+							</tr>
+							<tr>
+								<td align="right">通胀率</td>
+								<td align="right"><input type="text" name="cinflation" id="cinflation" value="<?php echo isset($data['cinflation'])?$data['cinflation']:3 ?>" class="innormal inpct" </td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="right">房租增长率</td>
+								<td align="right"><input type="text" name="crent" id="crent" value="<?php echo isset($data['crent'])?$data['crent']:5 ?>" class="innormal inpct" </td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="right">房价</td>
+								<td align="right"><input type="text" name="cprice" id="cprice" value="<?php echo isset($data['cprice'])?$data['cprice']:1200000 ?>" class="inlong indollar" ></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="right">月租金</td>
+								<td align="right"><input type="text" name="mcrent" id="mcrent" value="<?php echo isset($data['mcrent'])?$data['mcrent']:1500 ?>" class="inlong indollar"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="right">持有年限 <small>（计算器输入额最多50年）</small></td>
+								<td align="right"><input type="text" name="cholding" id="cholding" value="<?php echo isset($data['cholding'])?$data['cholding']:30 ?>" class="innormal" ></td>
+								<td>年</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="right">
+									<br>
+									<button type="submit" class="btn btn-primary">输出结果</button>
+									<button type="button" class="btn btn-danger" onclick="clearForm(document.calform);" >清空</button>
+								</td>
+								<td>&nbsp;</td>
+							</tr>
+				
+						</tbody>
+					</table>
+				</form>
+				<?php if($is_show):?>
+	
+				<button onclick="printDeal()">打印</button>
+				<div id="printBox">
+				<a target="_blank" href="http://buyahouseinseattle.com/">buyahouseinseattle.com——二代居计算器</a>
+					<div id="input_data" >
+						<h2 class="h2result">输入</h2>
+						<div class="row">
+							<div class="col-sm-6">
+								<table class="table table-striped table-hover table-responsive table-bordered">
+								  <tbody>
+										<tr align='left' >
+											<td>通胀率</td><td> <span class=""><?php echo $data['cinflation'];?> %</span> </td>
+										</tr>
+										<tr align='left' >
+											<td>房租增长率</td><td> <span class=""><?php echo $data['crent'];?> %</span> </td>
+										</tr>
+									
+								  </tbody>
+								</table>
+							</div>
+							<div class="col-sm-6">
+								<table class="table table-striped table-hover table-responsive table-bordered">
+								  <tbody>
+										<tr align='left'>
+											<td>房价	</td><td>$ <span class=""><?php echo $cprice;?> </span> </td>
+										</tr>
+										<tr align='left' >
+											<td>月租金</td><td>$ <span class=""><?php echo $data['mcrent'];?> </span> </td>
+										</tr>
+										<tr align='left'>
+											<td>持有年限 <small>（计算器输入额最多50年）</small></td><td> <span class=""><?php echo $data['cholding'];?> 年</span> </td>
+										</tr>
+									
+								  </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<h2 class="h2result">结果</h2>
+					<div class="row">
+						<div class="col-sm-6">
+							<table class="table table-striped table-hover table-responsive table-bordered">
+							  <tbody>
+									<tr align='left' >
+										<td>房价</td><td>$ <span class=""><?php echo round($cprice,0);?> </span> </td>
+									</tr>
+									<tr align='left'>
+										<td>总租金收入</td><td>$ <span class=""><?php echo round($total_rent,0);?> </span> </td>
+									</tr>
+								
+							  </tbody>
+							</table>
+						</div>
+						<div class="col-sm-6">
+							<table class="table table-striped table-hover table-responsive table-bordered">
+							  <tbody>
+									<tr align='left' >
+										<td>总租金收入现值</td><td>$ <span class=""><?php echo round($total_rent_v,0);?> </span> </td>
+									</tr>
+									<tr align='left'>
+										<td>买房实际支出</td><td>$ <span class=""><?php echo round($total_cost,0);?> </span> </td>
+									</tr>
+								
+							  </tbody>
+							</table>
+						</div>
+					</div>
+					
+					<!-- <h3>Output</h3> -->
+					<div class="table-responsive output">
+							<table  id="table" class="table table-bordered table-hover" >   
+								<thead>
+									<tr class="table-header">
+									  <th>年</th>
+									  <th>年租金收入</th>
+									  <th>年租金收入现值</th>
+									</tr>
+								</thead>
+						
+								<tbody >
+									<?php foreach ($list as $k=>$row): ?>
+										<tr align="left">
+											<td><?php echo $row['year']; ?></td>
+											<td>$ <?php echo round($row['yrent_income'],0); ?></td>
+											<td>$ <?php echo round($row['yrent_income_v'],0); ?></td>
+										</tr> 
+									<?php endforeach; ?>
+									
+								</tbody>
+							</table>
+						</div>
+				</div>
+				<?php endif;?>
+				
+				
+			</div>
+		<?php include 'template/float.html';?>
+	</body>
+</html>

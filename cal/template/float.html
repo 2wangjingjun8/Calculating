@@ -1,0 +1,30 @@
+
+<div class="float_div">
+	<a href="#" class="list-group-item active">
+		切换计算器类型
+	</a>
+	<a href="index.php" class="list-group-item">租售比计算器</a>
+	<a href="supply.php" class="list-group-item">月供计算器</a>
+	<a href="two.php" class="list-group-item">二代居计算器</a>
+	<button type="button" class="btn btn-default btn_in" onclick="hideBtn();"> >> </button>
+	<button type="button" class="btn btn-default btn_out" onclick="showBtn();"> << </button>
+</div>
+
+<!-- <div class="text-left" class="link_friend" style="position: fixed;bottom: 10px;left: 10px;"> 
+	<a target="_blank" href="http://www.misall.com">秘奥软件</a>
+	<a target="_blank" href="http://www.yunya8.com/">云亚网络</a>
+</div> -->
+
+<script type="text/javascript">
+	$('.float_div .btn_out').hide();
+	function hideBtn(){
+		$('.float_div a').hide();
+		$('.float_div .btn_in').hide();
+		$('.float_div .btn_out').show();
+	}
+	function showBtn(){
+		$('.float_div a').show();
+		$('.float_div .btn_in').show();
+		$('.float_div .btn_out').hide();
+	}
+</script>
